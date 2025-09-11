@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Redirect old.reddit.com to rl.bloat.cat
+// @name         Redirect old.reddit.com to libreddit
 // @namespace    Violentmonkey Scripts
 // @version      1.0
-// @description  Redirect old.reddit.com to rl.bloat.cat while keeping path and query intact
+// @description  Redirect old.reddit.com to libreddit while keeping path and query intact
 // @author       ChatMonkey
 // @match        https://old.reddit.com/*
 // @run-at       document-start
