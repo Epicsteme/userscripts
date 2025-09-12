@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         Redirect old.reddit.com to libreddit
+// @name         Redirect reddit.com to libreddit
 // @namespace    Violentmonkey Scripts
 // @version      1.0
-// @description  Redirect old.reddit.com to libreddit while keeping path and query intact
+// @description  Redirect reddit.com to libreddit while keeping path and query intact
 // @author       ChatMonkey
-// @match        https://old.reddit.com/*
+// @match        https://www.reddit.com/*
 // @run-at       document-start
 // ==/UserScript==
 
@@ -12,7 +12,7 @@
     'use strict';
 
     // Replace domain only, keep everything else (path, query, hash)
-    const newUrl = location.href.replace(/^https:\/\/old\.reddit\.com/, "https://redlib.perennialte.ch");
+    const newUrl = location.href.replace(/^https:\/\/www\.reddit\.com/, "https://redlib.perennialte.ch");
 
     if (location.href !== newUrl) {
         location.replace(newUrl);
