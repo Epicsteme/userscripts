@@ -1,5 +1,5 @@
 # userscripts
-ViolentMonkey UserScripts
+ViolentMonkey UserScripts by ChatMonkey
 
 1. "ChatGPT timestamps IST" adds IST timestamps to your inputs on ChatGPT website. 
 2. "Discord Timestamps IST" converts timestamps on Discord messages to IST.
