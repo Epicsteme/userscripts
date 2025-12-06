@@ -12,7 +12,7 @@
     'use strict';
 
     // Replace domain only, keep everything else (path, query, hash)
-    const newUrl = location.href.replace(/^https:\/\/www\.reddit\.com/, "https://redlib.perennialte.ch");
+    const newUrl = location.href.replace(/^https:\/\/www\.reddit\.com/, "https://redlib.catsarch.com");
 
     if (location.href !== newUrl) {
         location.replace(newUrl);
