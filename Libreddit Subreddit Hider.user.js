@@ -16,7 +16,8 @@
         'redlib.perennialte.ch',
         'libreddit.perennialte.ch',
         'rl.bloat.cat',
-        'l.opnxng.com'
+        'l.opnxng.com',
+	'redlib.catsarch.com'
         // Add more instance domains here (exact hostnames)
     ];
 
