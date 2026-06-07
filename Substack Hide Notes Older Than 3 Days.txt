@@ -12,7 +12,7 @@
 (function () {
     'use strict';
 
-    const MAX_AGE_DAYS = 3;
+    const MAX_AGE_DAYS = 7;
 
     function parseDate(text) {
         const date = new Date(text);
