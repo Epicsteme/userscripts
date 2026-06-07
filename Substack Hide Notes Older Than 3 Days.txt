@@ -1,0 +1,63 @@
+// ==UserScript==
+// @name         Substack Hide Notes Older Than 3 Days
+// @namespace    https://substack.com/
+// @version      1.0
+// @description  Hides Substack Notes older than 3 days.
+// @author       Chatviro
+// @match        https://substack.com/*
+// @match        https://*.substack.com/*
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    const MAX_AGE_DAYS = 3;
+
+    function parseDate(text) {
+        const date = new Date(text);
+        return isNaN(date.getTime()) ? null : date;
+    }
+
+    function hideOldNotes() {
+        const cutoff = Date.now() - (MAX_AGE_DAYS * 24 * 60 * 60 * 1000);
+
+        document.querySelectorAll('a[title]').forEach(link => {
+            const title = link.getAttribute('title');
+
+            // Example:
+            // "3 Jun 2026, 5:31 am"
+            if (!title || !/\d{4}/.test(title)) return;
+
+            const noteDate = parseDate(title);
+            if (!noteDate) return;
+
+            const noteContainer =
+                link.closest('[class*="feedUnit"]') ||
+                link.closest('article') ||
+                link.closest('[data-testid]');
+
+            if (!noteContainer) return;
+
+            if (noteDate.getTime() < cutoff) {
+                noteContainer.style.display = 'none';
+            }
+        });
+    }
+
+    // Initial run
+    hideOldNotes();
+
+    // Handle infinite scrolling / dynamically loaded notes
+    const observer = new MutationObserver(() => {
+        hideOldNotes();
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    // Periodic refresh in case Substack updates content without DOM mutations
+    setInterval(hideOldNotes, 30000);
+})();
