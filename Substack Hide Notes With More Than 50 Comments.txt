@@ -2,7 +2,7 @@
 // @name         Substack Hide Notes With More Than 50 Comments
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @user         Chatviro
+// @author       Chatviro
 // @match        https://substack.com/*
 // @grant        none
 // ==/UserScript==
