@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Adds IST date+time timestamps to user messages and keeps them persistent across refresh
-// @author       ChatMonkey
+// @author       Chatviro
 // @match        https://chatgpt.com/*
 // @grant        none
 // ==/UserScript==

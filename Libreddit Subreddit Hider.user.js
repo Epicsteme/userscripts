@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1
 // @description  Hide posts from specific subreddits on multiple Libreddit/Redlib instances
-// @author       ChatMonkey
+// @author       Chatviro
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==

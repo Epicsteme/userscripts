@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Converts Discord timestamps to IST and allows font size adjustment
-// @author       ChatMonkey
+// @author       Chatviro
 // @match        https://discord.com/*
 // @grant        none
 // ==/UserScript==

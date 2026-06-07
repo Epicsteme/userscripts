@@ -1,0 +1,45 @@
+// ==UserScript==
+// @name         Substack Hide Notes With More Than 50 Comments
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @user         Chatviro
+// @match        https://substack.com/*
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    const LIMIT = 50;
+
+    function processFeed() {
+        document.querySelectorAll('button[aria-label="Comment"]').forEach(btn => {
+
+            if (btn.dataset.processed) return;
+            btn.dataset.processed = '1';
+
+            const countEl = [...btn.querySelectorAll('div')]
+                .find(el => /^\d+$/.test(el.textContent.trim()));
+
+            if (!countEl) return;
+
+            const count = parseInt(countEl.textContent.trim(), 10);
+
+            if (count <= LIMIT) return;
+
+            // Find the note container
+            const note = btn.closest('.feedUnit-NTpfyQ');
+
+            if (note) {
+                note.style.display = 'none';
+            }
+        });
+    }
+
+    processFeed();
+
+    new MutationObserver(processFeed).observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+})();
