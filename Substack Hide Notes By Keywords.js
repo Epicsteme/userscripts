@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Substack Hide "grow together"
+// @name         Substack Hide Notes By Keywords
 // @namespace    substack
-// @version      1.0
+// @version      1.1
 // @author       Chatviro
 // @match        https://substack.com/*
 // @grant        none
@@ -10,22 +10,30 @@
 (function () {
     'use strict';
 
-    function processNotes() {
+    const BLOCKED_WORDS = [
+        'connect',
+        'grow together'
+    ];
 
+    function processNotes() {
         document
             .querySelectorAll('.FeedProseMirror')
             .forEach(noteText => {
 
-                if (noteText.dataset.growTogetherProcessed) {
+                if (noteText.dataset.keywordProcessed) {
                     return;
                 }
 
-                noteText.dataset.growTogetherProcessed = '1';
+                noteText.dataset.keywordProcessed = '1';
 
-                const text =
-                    noteText.innerText.toLowerCase();
+                const text = noteText.innerText.toLowerCase();
 
-                if (!text.includes('grow together')) {
+                const containsBlockedWord =
+                    BLOCKED_WORDS.some(word =>
+                        text.includes(word.toLowerCase())
+                    );
+
+                if (!containsBlockedWord) {
                     return;
                 }
 
